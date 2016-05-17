@@ -1,4 +1,6 @@
 Meteor.startup(function() {
+  
+  // seed song requests DB
   if (SongRequests.find().count() == 0) {
     SongRequests.insert(
       {

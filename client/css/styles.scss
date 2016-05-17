@@ -1,0 +1,132 @@
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
+@import "/{meta:susy}/susy";
+
+$susy: (
+  columns: 12,
+  global-box-sizing: border-box,
+  // debug: (image: show)
+);
+
+@include border-box-sizing;
+
+body {
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+.container {
+  @include container();
+}
+
+.fs {
+  height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.banner {
+  position: relative;
+  min-height: 630px;
+  padding: 2em 0;
+  overflow: hidden;
+  &:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(images/grass_small.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 25%;
+    filter: brightness(80%);
+    transform: scale(1.2);
+    transition: all 2s ease-in-out;
+  }
+  &.active:before {
+    transform: scale(1.1);
+  }
+  @media (max-width: 768px) {
+    min-height: 540px;
+  }
+}
+
+.banner-heading {
+  font-weight: 400;
+  font-size: 1.5em;
+  line-height: 0.9;
+  color: white;
+  @media (max-width: 768px) {
+    font-size: 0.8em;
+  }
+}
+
+.banner-date {
+  @extend .banner-heading;
+  & hr {
+    width: span(4 of 12);
+  }
+}
+
+.banner-countdown {
+  @extend .banner-heading;
+  position: absolute;
+  bottom: 5vh;
+  width: 100%;
+}
+
+.big {
+    font-size: 2em;
+  }
+
+.logo.active path{
+  transition: fill 0.5s;
+  fill: #fff;
+}
+
+.slideInUp {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.7s ease-out;
+  transform: translate3d(0, 50px, 0);
+  .active & {
+    visibility: visible;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.map {
+  @include container();
+  width: 100%;
+  max-width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.location-box-container {
+  position: absolute;
+  right: 50%;
+  top: span(2 of 12);
+  width: span(3 of 12);
+  min-width: 180px;
+  z-index: 9990;
+}
+
+.location-box {
+  padding: 1em;
+  background-color: white;
+  box-shadow: 0 0 30px 5px rgba(0,0,0,0.1);
+
+}
+
+.location {
+  padding-bottom: 1em;
+}
+
+.directions {
+  text-align: right;
+}
