@@ -323,7 +323,7 @@ nav {
 // Bride & Groom Photo Cards
 #bios {
   .wrapper {
-    padding: 0 gutter();
+    padding: gutter()/2;
   }
 }
 .bio-card {
@@ -383,10 +383,10 @@ nav {
   }
   @media (min-width: 769px) {
     &:nth-of-type(2n + 1) {
-      width: span(5 wider of 12);
+      width: span(6 of 12);
     }
     &:nth-of-type(2n) {
-      width: span(5 wider of 12 last);
+      width: span(6 of 12 last);
     }
   }
   // @media (max-width: 768px) {

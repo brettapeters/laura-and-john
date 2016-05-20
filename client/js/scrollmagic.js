@@ -25,13 +25,13 @@ Template.body.onRendered(function() {
     .addTo(controller);
     })
     
-    var lightSections = ['#bs01', '#bs02', '#bs03', '#bios', '#map'];
+    // var lightSections = ['#bs01', '#bs02', '#bs03', '#bios', '#map'];
     
     // lightSections.forEach(function(section) {
     //   var lightScene = new ScrollMagic.Scene({
     //   triggerElement: section,
     //   triggerHook: 0.50,
-    //   duration: '100%'
+    //   duration: 100%
     // })
     // .setClassToggle('nav', 'is-dark')
     // .addTo(controller);
@@ -43,7 +43,7 @@ Template.body.onRendered(function() {
     //   var lightScene = new ScrollMagic.Scene({
     //   triggerElement: section,
     //   triggerHook: 0.50,
-    //   duration: '100%'
+    //   duration: 100%
     // })
     // .setClassToggle('nav', 'is-light')
     // .addTo(controller);
