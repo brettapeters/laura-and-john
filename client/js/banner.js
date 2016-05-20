@@ -8,10 +8,10 @@ Template.banner.onRendered(function() {
 
 Template.banner.helpers({
   daysToGo: function() {
-    let weddingDate = new Date(2016, 9, 2, 16);
+    let weddingDate = new Date(2016, 9, 2);
     let today = new Date();
     let msInDay = 86400000;
-    let daysToGo = Math.floor((weddingDate - today) / msInDay);
+    let daysToGo = Math.ceil((weddingDate - today) / msInDay);
     return daysToGo;
   }
 })
