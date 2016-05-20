@@ -1,5 +1,9 @@
 Template.banner.onRendered(function() {
-  drawLogo();
+  if(!Modernizr.touch) {
+    drawLogo();
+  } else {
+    $('.logo, .banner-heading, .banner-date, .banner-countdown').addClass('active');
+  }
 })
 
 Template.banner.helpers({
@@ -7,13 +11,15 @@ Template.banner.helpers({
     let weddingDate = new Date(2016, 9, 2, 16);
     let today = new Date();
     let msInDay = 86400000;
-    let daysToGo = Math.ceil((weddingDate - today) / msInDay);
+    let daysToGo = Math.floor((weddingDate - today) / msInDay);
     return daysToGo;
   }
 })
 
 Template.banner.events({
-  'click .logo svg > g': drawLogo
+  'click .arrows': function() {
+    $('a[href="#bs01"]').click();
+  }
 })
 
 function drawLogo() {

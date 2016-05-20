@@ -1,32 +1,57 @@
-Template.content.onRendered(function() {
-  // Init ScrollMagic controller
-  var controller = new ScrollMagic.Controller();
+Template.body.onRendered(function() {
+  var content = ['#bs01', '#bs02', '#bs03', '#bs04', '#bs06', '#story .wrapper'];
   
-  // Get all triggers for slides
-  var headers = ['#slide1 header', '#slide2 header', '#slide3 header'];
-  
-  // Create scenes for headers
-  headers.forEach(function(header, index) {
-    var num = index + 1;
-    var headerScene = new ScrollMagic.Scene({
-      triggerElement: header,
-      offset: -95
+  if(!Modernizr.touch) {
+    // Init ScrollMagic controller
+    var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: "200%"}});
+    
+    var bcgSlides = ['#intro', '#story', '#details'];
+    
+    bcgSlides.forEach(function(slide) {
+      var $bcg = $(slide).find('.bcg');
+      
+      var slideParallaxScene = new ScrollMagic.Scene()
+      .setTween(TweenMax.to($bcg, 1, {y: '80%', ease:Power0.easeNone}))
+      .addTo(controller);
     })
-    .setClassToggle(`#slide${num}`, 'active')
-    .reverse(false)
-    .addTo(controller)
-  });
-  
-  // Create Animation for 0.5s
-  var tween = TweenMax.to('#animation', 0.5, {
-    left: '500px',
-  });
-  
-  // Create the Scene and trigger when visible with ScrollMagic
-  var scene = new ScrollMagic.Scene({
-    triggerElement: '#scene',
-    offset: 250, /* offset the trigger 150px below #scene's top */
-  })
-  .setTween(tween)
-  .addTo(controller);
+    
+    
+    content.forEach(function(id) {
+      var contentSlide = new ScrollMagic.Scene({
+      triggerElement: id,
+      offset: '-300px'
+    })
+    .setClassToggle(id, 'active')
+    .addTo(controller);
+    })
+    
+    var lightSections = ['#bs01', '#bs02', '#bs03', '#bios', '#map'];
+    
+    // lightSections.forEach(function(section) {
+    //   var lightScene = new ScrollMagic.Scene({
+    //   triggerElement: section,
+    //   triggerHook: 0.50,
+    //   duration: '100%'
+    // })
+    // .setClassToggle('nav', 'is-dark')
+    // .addTo(controller);
+    // })
+    
+    // var darkSections = ['#intro', '#story']
+    
+    // darkSections.forEach(function(section) {
+    //   var lightScene = new ScrollMagic.Scene({
+    //   triggerElement: section,
+    //   triggerHook: 0.50,
+    //   duration: '100%'
+    // })
+    // .setClassToggle('nav', 'is-light')
+    // .addTo(controller);
+    // });
+  }
+  else {
+    content.forEach(function(section) {
+      $(section).addClass('active');
+    })
+  }
 })

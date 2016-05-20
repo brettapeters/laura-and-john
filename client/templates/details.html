@@ -1,0 +1,48 @@
+<template name="details">
+  <article id="bs03" class="light-section break-section">
+    <div class="wrapper">
+      <header class="content-block">
+        <h1 class="slideInUp big">Celebrate with us!</h1>
+        <p class="slideInUp slideInUp2 text-block">On October 2nd, John and Laura will be celebrating their marriage at Spruce Mountain Ranch in Larkspur, Colorado. They, along with their families, would be honored to have you join for a night of cupid shufflin, hootin hollerin good times, and maybe some Fetty Wap.</p>
+        <h1 class="slideInUp slideInUp2">& Stay the night</h1>
+        <p class="slideInUp slideInUp2"><a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Peters/Almeida%20Wedding%5Edenms%60pawpawa%60103.00%60USD%60false%601%609/29/16%6010/3/16%609/9/16&app=resvlink&stop_mobi=yes" target=blank>Book a room</a> at our swanky Marriott hotel block before 9/9/16!</p>
+      </header>
+    </div> <!-- .wrapper -->
+  </article>
+  
+  <article id="details" class="slide light-section">
+    <div class="location-box-container">
+      <div id="venue" class="location-box">
+        <h2>Spruce Mountain Ranch</h2>
+        <address class="location">
+          14771 South Spruce Mountain Road <br>
+          Larkspur, CO 80118
+        </address>
+        <span class="directions">
+          <a href="https://www.google.com/maps/dir//Spruce+Mountain+Ranch,+14771+Spruce+Mountain+Road,+Larkspur,+CO+80118/@39.1500524,-104.8947099,17z/data=!4m16!1m7!3m6!1s0x876caf06c1afc669:0xb1756c4ba1ed03a5!2sSpruce+Mountain+Ranch!3b1!8m2!3d39.1501814!4d-104.8906437!4m7!1m0!1m5!1m1!1s0x876caf06c1afc669:0xb1756c4ba1ed03a5!2m2!1d-104.8906437!2d39.1501814" target=blank>Get directions</a>
+        </span>
+      </div>
+      <div id="hotel" class="location-box">
+        <h2>Marriott South at Park Meadows</h2>
+        <address class="location">
+          10345 Park Meadows Drive<br>
+          Lone Tree, CO 80124
+          
+        </address>
+        <ul>
+          <li>Start date: 9/29/16</li>
+          <li>End date: 10/3/16</li>
+          <li>Last day to book: 9/9/16</li>
+        </ul>
+        
+        <span class="directions">
+          $103.00 USD  per night<br>
+          <a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Peters/Almeida%20Wedding%5Edenms%60pawpawa%60103.00%60USD%60false%601%609/29/16%6010/3/16%609/9/16&app=resvlink&stop_mobi=yes" target=blank>Book a room</a>
+        </span>
+      </div>
+    </div>
+    <div class="map">
+      {{> googleMap name="location" options=mapOptions }}
+    </div>
+  </article>
+</template>

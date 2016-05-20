@@ -3,14 +3,23 @@
 
 $susy: (
   columns: 12,
-  global-box-sizing: border-box,
-  // debug: (image: show)
+  global-box-sizing: border-box
 );
 
 @include border-box-sizing;
 
+$lightest: #EEE;
+$darkest: #222;
+$blue: #50b2bd;
+
 body {
+  margin: 0;
   font-family: 'Didact Gothic', sans-serif;
+  background-color: $lightest;
+}
+
+hr {
+  border: 1px solid $lightest;
 }
 
 .container {
@@ -19,35 +28,47 @@ body {
 
 .fs {
   height: 100vh;
+  overflow: hidden;
 }
 
-.text-center {
-  text-align: center;
+.bcg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  #intro & {
+    background-image: url(images/dancing.jpg);
+    background-position: center 0;
+    filter: contrast(130%) brightness(0.8);
+    @media (max-width: 768px) {
+      background-position: 25% 0;
+    }
+  }
+  #story & {
+    height: 200%;
+    top: -100%;
+    background-image: url(images/flatirons.jpg);
+    background-position: 100% center;
+  }
+  #details & {
+    height: 200%;
+    top: -100%;
+    background-image: url(images/grass-min.jpg);
+    background-position: center 100%;
+  }
 }
 
 .banner {
+  min-height: 670px;
+  text-align: center;
+  color: $lightest;
   position: relative;
-  min-height: 630px;
-  padding: 2em 0;
-  overflow: hidden;
-  &:before {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: url(images/grass_small.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 25%;
-    filter: brightness(80%);
-    transform: scale(1.2);
-    transition: all 2s ease-in-out;
-  }
-  &.active:before {
-    transform: scale(1.1);
+  .wrapper {
+    position: relative;
+    padding: 2em 0;
+    z-index: 2;
   }
   @media (max-width: 768px) {
     min-height: 540px;
@@ -55,10 +76,11 @@ body {
 }
 
 .banner-heading {
+  z-index: 2;
   font-weight: 400;
   font-size: 1.5em;
   line-height: 0.9;
-  color: white;
+  color: $lightest;
   @media (max-width: 768px) {
     font-size: 0.8em;
   }
@@ -66,15 +88,20 @@ body {
 
 .banner-date {
   @extend .banner-heading;
+  position: relative;
+  left: 15%;
   & hr {
-    width: span(4 of 12);
+    width: 12em;
+  }
+  @media (max-width: 768px) {
+    left: 0;
   }
 }
 
 .banner-countdown {
   @extend .banner-heading;
   position: absolute;
-  bottom: 5vh;
+  bottom: 95px;
   width: 100%;
 }
 
@@ -82,9 +109,92 @@ body {
     font-size: 2em;
   }
 
-.logo.active path{
-  transition: fill 0.5s;
-  fill: #fff;
+.logo {
+  padding: 0 gutter();
+  & path {
+    stroke-width: 2px;
+    fill: transparent;
+    stroke: $lightest;
+  }
+  &.active path {
+    transition: fill 0.5s;
+    fill: $lightest;
+  }
+  @media (max-width: 768px) {
+    position: relative;
+    top: -3em;
+  }
+}
+
+.arrows {
+	width: 60px;
+	height: 72px;
+	position: absolute;
+	left: 50%;
+	margin-left: -20px;
+	bottom: -60px;
+  animation: bounce 3.5s ease-in-out infinite;
+}
+
+.arrows path {
+	stroke: $lightest;
+	fill: transparent;
+	stroke-width: 2px;	
+}
+
+@keyframes bounce {
+  0% { bottom: -60px }
+  10% { bottom: -70px }
+  20% { bottom: -60px }
+}
+
+.slide {
+  position: relative;
+  z-index: 2;
+  .wrapper {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  &#story {
+    .wrapper {
+      position: absolute;
+      top: 20%;
+      @media (max-width: 768px) {
+        position: relative;
+        top: 0;
+      }
+    }
+  }
+}
+.text-block {
+  width: 600px;
+  line-height: 1.5;
+  margin: 1.2em auto;
+  @media (max-width: 768px) {
+    width: span(11 of 12);
+    font-size: 0.9em;
+  }
+}
+
+.content-block {
+  font-size: 1.3em;
+  position: relative;
+  padding: 20px 0;
+  z-index: 2;
+  .light-section & {
+    color: $darkest;
+    background-color: $lightest;
+  }
+  .dark-section & {
+    color: $lightest;
+    background-color: rgba(0,0,0,0.55);
+  }
+  .break-section & {
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
 }
 
 .slideInUp {
@@ -92,6 +202,7 @@ body {
   opacity: 0;
   transition: all 0.7s ease-out;
   transform: translate3d(0, 50px, 0);
+  &.slideInUp2{transition-delay: 0.2s;}
   .active & {
     visibility: visible;
     opacity: 1;
@@ -100,10 +211,8 @@ body {
 }
 
 .map {
-  @include container();
+  height: 80vh;
   width: 100%;
-  max-width: 100%;
-  height: 400px;
   position: relative;
 }
 
@@ -117,10 +226,13 @@ body {
 }
 
 .location-box {
+  display: none;
   padding: 1em;
   background-color: white;
   box-shadow: 0 0 30px 5px rgba(0,0,0,0.1);
-
+  ul {
+    margin-top: 0;
+  }
 }
 
 .location {
@@ -129,4 +241,155 @@ body {
 
 .directions {
   text-align: right;
+}
+
+
+.is-loading {
+  overflow: hidden;
+}
+
+/* =Navigation */
+nav {
+  display: none;
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  z-index: 9999;
+  a {
+    display: block;
+    line-height: 25px;
+    position: relative;
+    padding-right: 20px;
+    color: $lightest;
+    text-decoration: none; 
+    &:hover {
+      .nav-label {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  .nav-dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background-color: transparentize($darkest, 0.4);
+    border-radius: 100%;
+    transform: translateY(-50%); 
+    transition: all 0.3s linear;
+  }
+  a {
+    color: transparentize($darkest, 0.2);
+  }
+  .nav-label {
+    display: block;
+    opacity: 0.5;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.2s cubic-bezier(.17,.67,.83,.67);
+  }
+  &.is-dark {
+    a {
+      color: $darkest;
+    }
+    .nav-dot {
+      background-color: transparentize($darkest, 0.3);
+    }
+  }
+  &.is-light {
+    a {
+      color: $lightest;
+    }
+    .nav-dot {
+      background-color: $lightest;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    width: auto;
+    list-style: none;
+  }
+}
+
+// Bride & Groom Photo Cards
+#bios {
+  .wrapper {
+    padding: 0 gutter();
+  }
+}
+.bio-card {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  color: $lightest;
+  text-align: center;
+  background-color: $darkest;
+  * {
+    transition: all 0.3s ease;
+  }
+  img {
+    width: 100%;
+    max-height: 100%;
+    min-height: 30vh;
+    backface-visibility: hidden;
+  }
+  h2 {
+    opacity: 0.8;
+    margin: 0;
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  figcaption {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    padding: 20px 30px 20px 50px;
+  }
+  p {
+    margin: 0 auto;
+    padding: 8px auto 15px;
+    max-width: 500px;
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+  &.hover {
+    p {
+      transform: translateY(0%);
+    }
+    figcaption {
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
+    > img {
+      filter: blur(30px);
+      transform: scale(1.2);
+      opacity: 0.15;
+    }
+  }
+  @media (min-width: 769px) {
+    &:nth-of-type(2n + 1) {
+      width: span(5 wider of 12);
+    }
+    &:nth-of-type(2n) {
+      width: span(5 wider of 12 last);
+    }
+  }
+  // @media (max-width: 768px) {
+  //   @include span(12 of 12);
+  // }
 }
