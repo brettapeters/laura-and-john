@@ -5,11 +5,11 @@ Template.details.onRendered(function() {
   GoogleMaps.ready('location', function(map) {
     // Add markers
     var locations = [{id: '#venue',
-                      icon: 'images/wedding-couple-icon.svg',
+                      icon: 'images/love.png',
                       latLng: {lat: 39.150181, lng: -104.890654}
                      },
                      {id: '#hotel',
-                      icon: 'images/hotel-icon.svg',
+                      icon: 'images/hotel-building.png',
                       latLng: {lat: 39.541728, lng: -104.870396}
                      }];
                      
