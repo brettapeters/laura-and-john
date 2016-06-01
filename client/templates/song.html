@@ -1,0 +1,38 @@
+<template name="song">
+  {{#if newUser}}
+  <article id="bs06" class="light-section break-section">
+    <div class="wrapper">
+      <header class="content-block">
+        <h1 class="big">Request a song</h1>
+      </header>
+    </div> <!-- .wrapper -->
+  </article>
+  
+  <article id="song" class="slide dark-section container">
+    <div class="bcg no-touch"></div>
+    <div class="wrapper content-block">
+      <hr width='250px'>
+      <div id="song-request">
+        <form>
+          <span class="field">
+            <label for="title">Song Title:</label>
+            <input type="text" name="title" maxlength="75" required/>
+          </span>
+          <span class="field">
+            <label for="artist">Artist:</label>
+            <input type="text" name="artist" maxlength="75" required/>
+          </span>
+          <span class="field">
+            <label for="requested_by">Requested By:</label>
+            <input type="text" name="requested_by" maxlength="75" required/>
+          </span>
+          <span class="field">
+            <input type="submit" value="Submit"/>
+          </span>
+        </form>
+      </div> <!-- /song-request -->
+      <hr width='250px'>
+    </div> <!-- /wrapper -->
+  </article>
+  {{/if}}
+</template>

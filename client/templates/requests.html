@@ -1,0 +1,21 @@
+<template name="requests">
+  <article id='songs-table'>
+    <table>
+      <thead>
+        <td>Title:</td>
+        <td>Artist:</td>
+        <td>Requested By:</td>
+      </thead>
+      <tbody>
+        {{#each songs}}
+          <tr>
+            <td>{{title}}</td>
+            <td>{{artist}}</td>
+            <td>{{requestedBy}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>  
+  </article>
+</template>
+   

@@ -1,5 +1,14 @@
+// Server
+
 import { Meteor } from 'meteor/meteor';
 
-Meteor.startup(() => {
-  // code to run on server at startup
-});
+Meteor.methods({
+  submittedRequest: function () {
+    return !!Users.findOne({addr: this.connection.clientAddress});
+  },
+  addUser: function() {
+    if (!Users.findOne({addr: this.connection.clientAddress})) {
+      Users.insert({addr: this.connection.clientAddress});
+    }
+  }
+})

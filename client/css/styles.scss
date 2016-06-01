@@ -11,6 +11,7 @@ $susy: (
 $lightest: #EEE;
 $darkest: #222;
 $blue: #50b2bd;
+$blue-hover: #3c949e;
 
 body {
   margin: 0;
@@ -52,11 +53,9 @@ hr {
     background-image: url(images/flatirons.jpg);
     background-position: 100% center;
   }
-  #details & {
-    height: 200%;
-    top: -100%;
-    background-image: url(images/grass-min.jpg);
-    background-position: center 100%;
+  #song & {
+    background-image: url(images/grass.jpg);
+    background-position: 25% center;
   }
 }
 
@@ -389,7 +388,60 @@ nav {
       width: span(6 of 12 last);
     }
   }
-  // @media (max-width: 768px) {
-  //   @include span(12 of 12);
-  // }
+}
+
+#song-request {
+  text-align: center;
+  width: 100%;
+  padding: 2em 0 3em 0;
+}
+
+.field {
+  display: inline-block;
+  width: span(2 of 12);
+  * {
+    margin: 5px;
+    border: none;
+    width: 100%;
+    display: block;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  @media (max-width: 768px) {
+    width: span(11 wide of 12);
+  }
+}
+  
+input[type="text"] {
+  padding: 10px;
+  text-align: center;
+  background-color: $lightest;
+  color: $darkest;
+}
+
+input[type="submit"] {
+  padding: 0 10px;
+  background-color: $blue;
+  color: $lightest;
+  font-family: inherit;
+  &:hover {
+    background-color: $blue-hover;
+  }
+}
+
+#songs-table {
+  table {
+    margin: 100px auto;
+  }
+  table, tr, td {
+    border: 1px solid $darkest;
+    text-align: center;
+    border-collapse: collapse;
+    color: $darkest;
+    padding: 5px;
+  }
+  thead {
+    font-weight: bold;
+  }
 }
