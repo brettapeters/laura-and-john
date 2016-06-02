@@ -399,6 +399,7 @@ nav {
 .field {
   display: inline-block;
   width: span(2 of 12);
+  vertical-align: bottom;
   * {
     margin: 5px;
     border: none;
@@ -409,7 +410,7 @@ nav {
     font-size: 0.9em;
   }
   @media (max-width: 768px) {
-    width: span(11 wide of 12);
+    width: span(11 of 12);
   }
 }
   
